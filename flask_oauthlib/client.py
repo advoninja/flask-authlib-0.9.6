@@ -533,7 +533,7 @@ class OAuthRemoteApp(object):
             client = self.make_client()
 
             if 'scope' in params:
-                scope = params.pop('scope')
+                scope = list(params.pop('scope'))
             else:
                 scope = None
 
