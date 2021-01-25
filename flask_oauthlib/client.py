@@ -521,6 +521,7 @@ class OAuthRemoteApp(object):
         params.update(**kwargs)
 
         if self.request_token_url:
+            print("Callback oauth", callback)
             token = self.generate_request_token(callback)[0]
             url = '%s?oauth_token=%s' % (
                 self.expand_url(self.authorize_url), url_quote(token)
@@ -606,7 +607,8 @@ class OAuthRemoteApp(object):
             print("Failed Data",data)
             raise OAuthException(
                 message,
-                type='token_generation_failed'
+                type='token_generation_failed', 
+                data=data
             )
         tup = (data['oauth_token'], data['oauth_token_secret'])
         session['%s_oauthtok' % self.name] = tup
