@@ -603,10 +603,10 @@ class OAuthRemoteApp(object):
             message = 'Failed to generate request token'
             if 'oauth_problem' in data:
                 message += ' (%s)' % data['oauth_problem']
+            print("Failed Data",data)
             raise OAuthException(
                 message,
-                type='token_generation_failed',
-                data=data,
+                type='token_generation_failed'
             )
         tup = (data['oauth_token'], data['oauth_token_secret'])
         session['%s_oauthtok' % self.name] = tup
