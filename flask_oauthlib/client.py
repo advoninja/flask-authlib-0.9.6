@@ -594,6 +594,7 @@ class OAuthRemoteApp(object):
         resp, content = self.http_request(
             uri, headers, method=self.request_token_method,
         )
+        print("generate_request_token res  {} content {} uri {} headrers {}".format(resp,content,uri,headers))
         data = parse_response(resp, content)
         if not data:
             raise OAuthException(
